@@ -440,8 +440,8 @@
         <div class="gallery-category-content"><h3>Hidangan</h3></div>
       </article>
 
-      <article class="gallery-category" data-gallery-category="1" data-gallery-key="golek" tabindex="0" role="button" aria-label="Buka koleksi Kambing Golek"><img src="./assets/updates/kambing-golek.webp" alt="Kambing Golek Premium" loading="lazy"><span class="gallery-open-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M7 17 17 7M9 7h8v8"/></svg></span><div class="gallery-category-content"><h3>Kambing Golek</h3></div></article>
-      <article class="gallery-category" data-gallery-category="2" data-gallery-key="sampingan" tabindex="0" role="button" aria-label="Buka koleksi Makanan Sampingan"><img src="./assets/updates/makanan-sampingan-1.webp" alt="Menu Makanan Sampingan" loading="lazy"><span class="gallery-open-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M7 17 17 7M9 7h8v8"/></svg></span><div class="gallery-category-content"><h3>Makanan Sampingan</h3></div></article>
+      <article class="gallery-category" data-gallery-category="1" data-gallery-key="golek" tabindex="0" role="button" aria-label="Buka koleksi Kambing Golek"><img src="./assets/kambing-golek.jpg" alt="Kambing Golek" loading="lazy"><span class="gallery-open-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M7 17 17 7M9 7h8v8"/></svg></span><div class="gallery-category-content"><h3>Kambing Golek</h3></div></article>
+      <article class="gallery-category" data-gallery-category="2" data-gallery-key="sampingan" tabindex="0" role="button" aria-label="Buka koleksi Makanan Sampingan"><img src="./assets/makanan-sampingan.jpg" alt="Makanan Sampingan" loading="lazy"><span class="gallery-open-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M7 17 17 7M9 7h8v8"/></svg></span><div class="gallery-category-content"><h3>Makanan Sampingan</h3></div></article>
       <article class="gallery-category float-b" data-gallery-category="3" data-gallery-key="vip"
         tabindex="0" role="button" aria-label="Buka koleksi VIP">
         <img src="./assets/vip.jpg" alt="VIP" loading="eager" fetchpriority="high" decoding="async">
@@ -561,8 +561,8 @@ const vipPaths=Array.from({length:30},(_,i)=>['jpg','jpeg','png','webp'].map(ext
 async function buildGallery(){
   galleryCollections=[
     {key:'food',title:'Hidangan',items:null,cover:'./assets/hidangan.jpg',coverCandidates:['./assets/hidangan.jpg'],klass:'float-a'},
-    {key:'golek',title:'Kambing Golek',items:null,cover:'./assets/updates/kambing-golek.webp'},
-    {key:'sampingan',title:'Makanan Sampingan',items:null,cover:'./assets/updates/makanan-sampingan-1.webp'},
+    {key:'golek',title:'Kambing Golek',items:null,cover:'./assets/kambing-golek.jpg'},
+    {key:'sampingan',title:'Makanan Sampingan',items:null,cover:'./assets/makanan-sampingan.jpg'},
     {key:'vip',title:'VIP',items:null,cover:'./assets/vip.jpg',coverCandidates:['./assets/vip.jpg'],klass:'float-b'}
   ];
 
@@ -631,6 +631,8 @@ async function openCollection(i){
   // Show the first real gallery photo immediately; the cover thumbnail is never used inside.
   const instant = c.key==='vip'
     ? {src:'assets/food/vip-majlis-01.jpg',label:'VIP'}
+    : c.key==='golek' ? suppliedGallery.golek[0]
+    : c.key==='sampingan' ? suppliedGallery.sampingan[0]
     : {src:'assets/food/jelatah-01.jpg',label:'Jelatah'};
   galleryVisible=[instant];
   showGallery();
